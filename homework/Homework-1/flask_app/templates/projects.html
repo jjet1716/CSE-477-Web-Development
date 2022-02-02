@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>CSE 477 Homework 1 Joseph Nagy</title>
+
+            <!-- link to the css stylesheets-->
+            <link href="static/main/css/base.css", rel="stylesheet">
+            <link href="static/main/css/main.css", rel="stylesheet">
+            <link href="static/main/css/header.css", rel="stylesheet">
+            <link href="static/main/css/footer.css", rel="stylesheet">
+            <link href="static/main/css/navbar.css", rel="stylesheet">
+
+            <!-- link to scripts -->
+            <script src="static/main/js/nav-toggle.js" defer></script>
+        </head>
+
+        <body>
+
+            <!-- Header & Nav Bar -->
+            <header class="header">
+            </header>
+
+            <section class="nav-bar-container">
+                <div class="title-container">
+                    <h1 id="title"><a href="home.html">CSE 477 Assignment 1</a></h1>
+                </div>
+
+                <nav class="nav">
+                    <div class="nav-hamburger">
+                        <div class="hamburger"></div>
+                    </div>
+                    <ul id="main-nav">
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="static/main/files/Resume.pdf" target="_blank">Resume</a></li>
+                        <li id="text-li"><a href="https://www.linkedin.com/in/joseph-nagy-73919a20a/" target="_blank">Linked-In</a></li>
+                        <li id="icon-li"><a href="https://www.linkedin.com/in/joseph-nagy-73919a20a/" target="_blank"><img id="linked-in-icon" src="static/main/images/social-linkedin.png" /></a></li>  
+                    </ul>
+                </nav>
+            </section>
+
+            <!-- Project Page Content -->
+            <main id="main">
+                <section class="main-content">
+                    <section class="projects-header">
+                        <h2>Below is a list of projects I worked on in CSE 477</h2>
+                        <p>Click an image, or hyperlink in the description to learn more</p>
+                    </section>
+
+                    <!-- 2 column layout -->
+                    <div class="col-container">
+                        <div class="col projects">
+                        </div>
+                        <div class="col">
+                            <div class="project-desc">
+                                <h1 id="project-title">Javascript Piano</h1>
+                                <p>As part of my first Homework assignment in CSE 477, I developed an
+                                    interactive piano build in pure HTML, CSS, and Javascript. This tool 
+                                    (in addition to my webpage) highlights my ability to build beautiful 
+                                    and mobile friendly front-end applications. 
+                                    
+                                    <a id="piano-link" href="piano.html">Click here to play with the Piano!</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Footer Content -->
+            <footer class="footer">
+                <p id="footer-text">©2022 Joseph Nagy</p>
+            </footer>
+
+        </body>
+    </html>
