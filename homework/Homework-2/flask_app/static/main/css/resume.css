@@ -1,0 +1,76 @@
+/*============= General Content Style ==============*/
+h1 {
+    font-size: 1.5rem;
+}
+
+h2 {
+    font-size: 1.2rem;
+    font-weight: normal;
+    font-style: italic;
+}
+
+hr {
+    width: 100%;
+}
+
+.right-align {
+    text-align: right;
+}
+
+.resume-container {
+    display: flex;
+    flex-direction: column;
+    margin: 50px auto;
+    width: 80vw;
+    max-width: 1200px;
+}
+
+.inst-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.inst-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.department {
+    display: block;
+}
+
+.pos-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.pos-info h2 {
+    margin-bottom: 20px;
+}
+
+.pos-info p:last-of-type {
+    flex-basis: 100%;
+}
+
+.exp-list li:not(:last-of-type) {
+    margin-bottom: 1em;
+}
+
+.exp-title {
+    font-weight: bold;
+}
+.exp-title.linked{
+    text-decoration: underline;
+    color: #b74747;
+    transition: color 0.25s linear;
+}
+
+.exp-title.linked:hover {
+    color: #b74747b6;
+}
+
+.skill-info {
+    font-size: 0.75rem;
+}

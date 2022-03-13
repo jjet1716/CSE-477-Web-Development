@@ -1,0 +1,53 @@
+{% extends 'shared/layout.html' %}
+
+{% block extracss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='main/css/main.css') }}">
+{% endblock %}
+
+{% block maincontent %}
+<section class="main-content">
+  <!-- 2 column layout -->
+  <div class="col-container">
+    <div class="col about">
+      <img src="/static/main/images/personal_photo2.jpg" alt="Personal Photo" loading="lazy"/>
+    </div>
+    <div class="col">
+      <div class="about-me-desc">
+        <h1 id="about-me-name">Joseph Nagy</h1>
+        <p>I am a Senior Computer Science Student at Michigan State University. During my time at MSU, I've gained an exceptional interest
+          in Web Development and design. Currently, I am working as an intern for a local Website Development firm where I have gotten 
+          the chance to design, develop, and deploy websites for municipalities and local businesses. I am working along side
+          graphic designers, and other developers to create ADA compliant user-friendly interfaces to improve the accessability for lots of people!
+          <br><br>
+          In my free time I enjoy mountain biking at parks around Michigan, Rock Climbing, and Cooking.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- fun fact -->
+  <div class="fun-fact">
+    <h1 id="fun-fact-header">A Fun Fact About Me</h1>
+    <p>I drive a Honda Civic older than me but I still love it.</p>
+  </div>
+</section>
+{% endblock %}
+
+<!--
+
+<div>
+  <p>
+    <h1>Prof. Ghassemi </h1>
+    is an award winning scholar and entrepreneur. He holds a Ph.D from the Massachusetts Institute of Technology in electrical engineering and computer science with a focus on artificial intelligence, and a minor in institutional communications.
+    <br><br>
+    Mohammad has over 10 years of experience working in technical and strategic consulting. In prior engagements, he has guided innovation strategy, and built data-driven technologies that leverage AI+'Big Data' to increase customer engagement, improve cost effectiveness, and prioritize innovation opportunities. He was a recipient of the nationally renowned Goldwater scholarship, the internationally renowned Gates-Cambridge award, and several awards from the National Institutes of Health.
+    <br><br>
+    For his entrepreneurial accomplishments, he has received awards from the National Science Foundation, the Sandbox Innovation Foundation, The Legatum Foundation, The Mind Hand Heart Innovation Fund and MassChallenge. He was a finalist in the Bell-Labs Innovation Prize, and a recent winner of the internationally competitive MassChallenge. He holds multiple US Patents, has published over 30 peer-reviewed papers in several of the most highly respected scientific journals including: Nature Scientific Data, Science Translational Medicine, Proceedings of the IEEE, and the Proceedings of the Association for the Advancement of Artificial Intelligence. His work has been featured by the BBC, NPR, The Wall Street Journal and Newsweek.
+  </p>
+</div>
+<hr>
+
+<p>A fun fact about me: <b>{{fun_fact}}</b> </p>
+
+-->
+

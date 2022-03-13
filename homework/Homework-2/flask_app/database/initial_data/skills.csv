@@ -1,0 +1,15 @@
+"skill_id","experience_id","name","skill_level"
+"1","1","Angular",NULL
+"2","1","Node.js",NULL
+"3","1","ANTLR",7
+"4","1","Monaco Editor",10
+"5","2","Android Studio",9
+"6","2","PHP",NULL
+"7","2","MySQL",NULL
+"8","3","PHP",8
+"9","3","HTML/CSS",10
+"10","3","JQuery",NULL
+"11","3","Figma",NULL
+"12","4","HTML/CSS",NULL
+"13","4","WooCommerce",NULL
+"14","4","Elementor",10

@@ -1,0 +1,4 @@
+"inst_id","type","name","department","address","city","state","zip"
+"1","Academia","Michigan State University","Computer Science Engineering",NULL,"East Lansing","Michigan",NULL
+"2","Industry","Shumaker Technology Group",NULL,NULL,"Lansing","Michigan",NULL
+"3","Service","Jimmy Johns Franchise, LLC",NULL,NULL,"Plymouth","Michigan",NULL

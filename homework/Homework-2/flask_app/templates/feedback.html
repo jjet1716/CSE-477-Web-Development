@@ -1,0 +1,19 @@
+{% extends 'shared/layout.html' %}
+
+{% block maincontent %}
+
+<div class="feedback-page-container">
+<h2>Thanks for your Feedback - here's what others had to say:</h2>  
+<ul class="feedback-list">
+{% for feedback_dict in feedback_data %}
+  <li class="feedback-item">
+    <a class="name-link" href="mailto:{{ feedback_dict['email'] }}">{{ feedback_dict['name'] }}</a>
+    <span>said: {{ feedback_dict['comment'] }}</span>
+  </li>
+{% endfor %}
+</ul>
+</div>
+
+{% endblock %}
+
+

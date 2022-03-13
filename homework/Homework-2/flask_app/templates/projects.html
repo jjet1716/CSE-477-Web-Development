@@ -1,0 +1,34 @@
+{% extends 'shared/layout.html' %}
+
+{% block extracss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='main/css/main.css') }}">
+{% endblock %}
+
+{% block maincontent %}
+<section class="main-content">
+  <section class="projects-header">
+    <h2>Below is a list of projects I worked on in CSE 477</h2>
+    <p>Click an image, or hyperlink in the description to learn more</p>
+  </section>
+
+  <!-- 2 column layout -->
+  <div class="col-container">
+    <div class="col projects">
+      <img src="/static/main/images/piano.jpeg" alt="Piano" loading="lazy"/>
+    </div>
+    <div class="col">
+      <div class="project-desc">
+        <h1 id="project-title">Javascript Piano</h1>
+        <p>As part of my first Homework assignment in CSE 477, I developed an
+          interactive piano build in pure HTML, CSS, and Javascript. This tool 
+          (in addition to my webpage) highlights my ability to build beautiful 
+          and mobile friendly front-end applications. 
+            
+          <a id="piano-link" href="piano">Click here to play with the Piano!</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+

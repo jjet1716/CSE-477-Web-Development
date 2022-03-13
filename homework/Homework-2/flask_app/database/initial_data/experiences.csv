@@ -1,0 +1,5 @@
+"experience_id","position_id","name","description","hyperlink","start_date","end_date"
+"1","1","Senior Capstone Project","Worked on a team of five to design and implement a browser-based IDE for Delta Dental that supports custom language processing for a proprietary DSL","https://capstone.cse.msu.edu/2022-01/projects/delta-dental-knowledge-science-1/","2022-01-01","2022-05-01"
+"2","1","Mobile battleship Game","Created an online android battleship game that used HTTP to send and receive data to and from a MySQL database",NULL,NULL,NULL
+"3","2","PDF Generator Web App","Developed a custom AJAX Web App that processes data in an Excel Sheet to upload in a MySQL database that allows users to generate dynamically filled PDF files",NULL,NULL,NULL
+"4","2","OTGS Website","Built and designed an eCommerce WordPress site using the Elementor Page Builder plugin and the WooCommerce eCommerce plugin ","https://oldtown-generalstore.com/",NULL,NULL
