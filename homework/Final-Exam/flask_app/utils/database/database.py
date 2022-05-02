@@ -158,7 +158,6 @@ class database:
     def getWord(self, date):
         word_row = self.query("SELECT * FROM `dailywords` WHERE date=%s", parameters=[date])
         if (word_row):
-            print("word from db: " + word_row[0]['word'])
             return {'success': 1, 'word': word_row[0]['word']}
 
         return {'success': 0}
@@ -179,9 +178,7 @@ class database:
     def onLeaderboard(self, email, date):
         score_row = self.query("SELECT * FROM `leaderboard` WHERE email=%s AND date=%s", parameters=[email, date])
         if (score_row):
-            print("user already submitted time: " + str(score_row[0]['time']))
             return True
-        print("user not added yet")
         return False
 
     def addToLeaderboard(self, email, date, time, completed):

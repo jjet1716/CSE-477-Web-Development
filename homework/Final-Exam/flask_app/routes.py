@@ -58,7 +58,7 @@ def processlogin():
     exists = db.authenticate(form_fields['email'], form_fields['password'])
     if (exists['success'] == 1):
         session['email'] = db.reversibleEncrypt('encrypt', form_fields['email']) 
-        session['wordleVisited'] = False
+        session['wordleComplete'] = False
         return json.dumps({'success':1})
     else:
         return json.dumps({'success':0})
@@ -69,7 +69,7 @@ def processSignup():
     created = db.createUser(form_fields['email'], form_fields['password'], 'user')
     if (created['success'] == 1):
         session['email'] = db.reversibleEncrypt('encrypt', form_fields['email'])
-        session['wordleVisited'] = False 
+        session['wordleComplete'] = False
         return json.dumps({'success':1})
     else:
         return json.dumps({'success':0})
@@ -80,7 +80,6 @@ def processSignup():
 def wordleCompare(correctWord, guessedWord):
     compareDict = {'success':1}
     for n in range(0, len(correctWord)):
-        print('comparing: ', guessedWord[n], 'and', correctWord[n])
         if (guessedWord[n] == correctWord[n]):
             compareDict[n] = "correct"
         elif (guessedWord[n] in correctWord):
@@ -104,7 +103,7 @@ def wordInDictionary(word):
     return True
 
 def createWord(date):
-    querystring = {"letterPattern":"[a-zA-Z]{1,10}","lettersmin":"1","lettersMax":"10","limit":"1", "random":"true"}
+    querystring = {"letterPattern":"^[a-zA-Z]{1,10}$","limit":"1", "random":"true", "frequencymin":"6.0"}
     headers = {
         "X-RapidAPI-Host": "wordsapiv1.p.rapidapi.com",
         "X-RapidAPI-Key": "959c86c7a2msh639a0380e20c53ep167105jsn31c49aff3482"
@@ -127,13 +126,11 @@ def getDailyWord():
 @app.route('/wordle')
 @login_required
 def wordle():
-    print('before', session['wordleVisited'])
     show_instructions = False
     if ('wordleVisited' not in session or session['wordleVisited'] == False): #first time user visits Wordle - show instructions
         show_instructions = True
         session['wordleVisited'] = True
 
-    print("show instructions: ", show_instructions)
     daily_word = getDailyWord()
     return render_template('wordle.html', user = getUser(), length = len(daily_word), instructions = show_instructions)
 
@@ -154,7 +151,6 @@ def addToLeaderboard():
     todays_date = str(datetime.today().date())
     time = fields['seconds']
     completed = fields['completed']
-    print('completed: ', completed)
     result = db.addToLeaderboard(email, todays_date, time, completed)
     if (result['success'] == 0):
         return json.dumps({'success':0})
@@ -162,11 +158,13 @@ def addToLeaderboard():
     return json.dumps({'success':1})
     
 @app.route('/wordle/leaderboard')
+@login_required
 def leaderboard():
     todays_date = str(datetime.today().date())
     scores = db.getLeaderBoardData(todays_date)
     scores_sorted = sorted(scores, key=itemgetter('time'))
-    return render_template('leaderboard.html', user = getUser(), scores_data = scores_sorted[0:5], date = todays_date, word = getDailyWord())
+    completed = str(db.onLeaderboard(getUser(), todays_date))
+    return render_template('leaderboard.html', user = getUser(), scores_data = scores_sorted[0:5], date = todays_date, word = getDailyWord(), complete = completed)
 
 
 #######################################################################################
@@ -192,9 +190,7 @@ def root():
 
 @app.route('/home')
 def home():
-	print(db.query('SELECT * FROM users'))
-	x = random.choice(['I started university when I was a wee lad of 15 years.','I have a pet sparrow.','I write poetry.'])
-	return render_template('home.html', user=getUser(), fun_fact = x)
+	return render_template('home.html', user=getUser())
 
 @app.route('/projects')
 def projects():

@@ -10,18 +10,26 @@
 
 {% block maincontent %}
 
-<div class="leaderboard-container">
-  <h2>Wordle Leaderboard For: {{word}}</h2>
-  <h4>{{date}}</h4>    
-  <ol class="leaderboard-list">
-  {% for score_dict in scores_data %}
-    <li class="leaderboard-item">
-      <a class="email-link" href="mailto:{{ score_dict['email'] }}">{{ score_dict['email'] }}</a>
-      <span>{{ score_dict['time'] }}</span>
-    </li>
-  {% endfor %}
-  </ol>
-</div>
+{% if complete == "True" %}
+  <div class="leaderboard-container">
+    <h2>Wordle Leaderboard For: {{word}}</h2>
+    <h4>{{date}}</h4>    
+    <ol class="leaderboard-list">
+    {% for score_dict in scores_data %}
+      <li class="leaderboard-item">
+        <a class="links" href="mailto:{{ score_dict['email'] }}">{{ score_dict['email'] }}</a>
+        <span>{{ score_dict['time'] }}</span>
+      </li>
+    {% endfor %}
+    </ol>
+  </div>
+{% else %}
+  <div class="leaderboard-container">
+    <h2>Wordle Leaderboard For: ??</h2>
+    <h4>{{date}}</h4>    
+    <p>Please complete todays <a class="links" href="{{ url_for('wordle') }}">Wordle</a> to view the leaderboard</p>
+  </div>
+{% endif %}
 
 {% endblock %}
 

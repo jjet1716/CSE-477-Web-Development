@@ -32,7 +32,7 @@ def create_app(debug=False):
 
 	from .utils.database.database import database
 	db = database()
-	db.createTables(purge=True)
+	db.createTables(purge=False)
 	
 	# NEW IN HOMEWORK 3 ----------------------------
 	# This will create a user

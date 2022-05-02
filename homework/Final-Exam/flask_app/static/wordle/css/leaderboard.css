@@ -4,8 +4,12 @@
     max-width: 1200px;
 }
 
-.leaderboard-container h2, .leaderboard-container h4 {
+.leaderboard-container h2, .leaderboard-container h4, .leaderboard-container p {
     text-align: center;
+}
+
+.leaderboard-container p {
+    padding-top: 2em;
 }
 
 .leaderboard-list {
@@ -19,7 +23,7 @@
     margin-bottom: 15px;
 }
 
-.email-link {
+.links {
     text-decoration: underline;
     color: #b74747;
     transition: color 0.25s linear;
