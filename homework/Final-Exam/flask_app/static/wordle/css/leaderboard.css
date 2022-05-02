@@ -1,0 +1,26 @@
+.leaderboard-container {
+    margin: 50px auto;
+    width: 80vw;
+    max-width: 1200px;
+}
+
+.leaderboard-container h2, .leaderboard-container h4 {
+    text-align: center;
+}
+
+.leaderboard-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.leaderboard-item {
+    word-break: break-all;
+    margin-bottom: 15px;
+}
+
+.email-link {
+    text-decoration: underline;
+    color: #b74747;
+    transition: color 0.25s linear;
+}

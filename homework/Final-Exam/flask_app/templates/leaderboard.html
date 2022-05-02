@@ -1,0 +1,28 @@
+{% extends 'shared/layout.html' %}
+
+{% block extracss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='wordle/css/leaderboard.css') }}">
+{% endblock %}
+
+{% block extrajs %}
+<script src="{{ url_for('static', filename='wordle/js/leaderboard.js') }}" defer></script>
+{% endblock %}
+
+{% block maincontent %}
+
+<div class="leaderboard-container">
+  <h2>Wordle Leaderboard For: {{word}}</h2>
+  <h4>{{date}}</h4>    
+  <ol class="leaderboard-list">
+  {% for score_dict in scores_data %}
+    <li class="leaderboard-item">
+      <a class="email-link" href="mailto:{{ score_dict['email'] }}">{{ score_dict['email'] }}</a>
+      <span>{{ score_dict['time'] }}</span>
+    </li>
+  {% endfor %}
+  </ol>
+</div>
+
+{% endblock %}
+
+

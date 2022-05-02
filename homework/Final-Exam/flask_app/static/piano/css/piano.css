@@ -1,0 +1,236 @@
+/* makes piano somewhat responsive */
+:root {
+    --piano-width: clamp(300px, 60vw, 650px);
+    --piano-height: clamp(254px, 50vh, 550px);
+}
+
+.poem-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    width: 80vw;
+    max-width: 800px;
+}
+
+.poem-container hr {
+    width: 100%;
+    margin-bottom: 3em;
+}
+
+.poem-container p {
+    text-align: center;
+    padding-bottom: 1em;
+    font-style: italic;
+}
+
+#main {
+    width: 100%;
+    margin: 100px 0;
+
+}
+.piano-container {
+    height: var(--piano-height);
+    width: var(--piano-width);
+    margin: 0 auto;
+    z-index: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    
+    padding: 35px 30px 8px 30px;
+    background-color: #424158;
+    border-top-left-radius: 13%;
+    border-top-right-radius: 13%;
+}
+
+.piano-container.awoken {
+    background: none;
+    background-image: url("/static/piano/images/texture.jpeg");
+    background-position: center center;
+    background-size: cover;
+
+    animation: awokenEntry 2s 0s forwards;
+}
+
+@keyframes awokenEntry {
+    0% {
+        filter: brightness(0.30);
+    }
+    100% {
+        filter: brightness(1);
+    }
+    
+}
+
+.piano-container.awoken .keys-container {
+    opacity: 0;
+    transition: opacity 1s linear;
+}
+
+.piano-container.awoken .piano-title, .piano-container.awoken .keys-container {
+    z-index: -1;
+}
+
+.piano-title {
+    font-family: cursive;
+    font-weight: 700;
+    color: white;
+    padding-top: 2em;
+    font-size: 15px;
+}
+
+.keys-container {
+    width: 100%;
+    position: relative;
+    height: calc(var(--piano-height) / 1.5);
+}
+
+.white {
+    position: absolute;
+    height: 100%;
+    width: calc(var(--piano-width) / 10);
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.black {
+    position: absolute;
+    height: 60%;
+    width: calc(var(--piano-width) / 20);
+    top: 0;
+    left: 0;
+    z-index: 2;
+
+    transform: translateX(-50%);
+}
+
+.white .inner-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    margin: 0 1.25px;
+
+    box-sizing: border-box;
+    background: white;
+    border: 5px solid black;
+    border-radius: 8px;
+}
+
+.black .inner-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    
+    background: black;
+    border-radius: 8px;
+}
+
+.white .inner-container p {
+    padding-bottom: 0.50em;
+    color: white;
+}
+
+.piano-container.visiting .white .inner-container p {
+    color: black;
+}
+
+.black .inner-container p {
+    padding-bottom: 0.50em;
+    color: black;
+}
+
+.piano-container.visiting .black .inner-container p {
+    color: white;
+}
+.keys-container .inner-container{
+    transition: transform 0.15s ease-in-out;
+}
+.keys-container .inner-container.pressed {
+    transform: scale(0.95);
+}
+
+.inner-container p {
+    transition: color 0.5s ease-in;
+}
+
+/* 
+    position & size white keys based on a tenth of the 
+    available space
+*/ 
+.white.S {
+    left: calc(1 * (var(--piano-width) / 10))
+}
+
+.white.D {
+    left: calc(2 * (var(--piano-width) / 10))
+}
+
+.white.F {
+    left: calc(3 * (var(--piano-width) / 10))
+}
+
+.white.G {
+    left: calc(4 * (var(--piano-width) / 10))
+}
+
+.white.H {
+    left: calc(5 * (var(--piano-width) / 10))
+}
+
+.white.J {
+    left: calc(6 * (var(--piano-width) / 10))
+}
+
+.white.K {
+    left: calc(7 * (var(--piano-width) / 10))
+}
+
+.white.L {
+    left: calc(8 * (var(--piano-width) / 10))
+}
+
+.white.semi {
+    left: calc(9 * (var(--piano-width) / 10))
+}
+
+/* 
+    position black keys based on a tenth of the 
+    available space to line up with white keys. Size them 
+    to be half the size of white keys 
+*/ 
+
+.black.W {
+    left: calc(1 * (var(--piano-width) / 10))
+}
+
+.black.E {
+    left: calc(2 * (var(--piano-width) / 10))
+}
+
+.black.T {
+    left: calc(4 * (var(--piano-width) / 10))
+}
+
+.black.Y {
+    left: calc(5 * (var(--piano-width) / 10))
+}
+
+.black.U {
+    left: calc(6 * (var(--piano-width) / 10))
+}
+
+.black.O {
+    left: calc(8 * (var(--piano-width) / 10))
+}
+
+.black.P {
+    left: calc(9 * (var(--piano-width) / 10))
+}

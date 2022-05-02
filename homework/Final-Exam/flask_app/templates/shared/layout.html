@@ -1,0 +1,106 @@
+<!-- FILL ME IN WITH CODE FOR YOUR PAGE LAYOUT -->
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSE 477 Homework 2 Joseph Nagy</title>
+
+  <link rel="icon" href="{{ url_for('static', filename='main/images/NJlogo.ico') }}" type="image/x-icon">
+
+  <!-- link to the css stylesheets-->
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/main.css') }}">
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/base.css') }}">
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/feedback.css') }}">
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/header.css') }}">
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/footer.css') }}">
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/navbar.css') }}">
+  {% block extracss %}{% endblock %}
+
+  <!-- link to scripts -->
+  <script src="{{ url_for('static', filename='main/js/main.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='main/js/nav-toggle.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='main/js/feedback-toggle.js') }}" defer></script>
+  {% block extrajs %}{% endblock %}
+</head>
+
+<body>
+
+    <!-- Header & Nav Bar -->
+    <header class="header">
+    </header>
+
+    <section class="nav-bar-container">
+      <div class="title-container">
+        <h1 id="title">
+          <a href="{{ url_for('home') }}">
+            {% if user == 'Unknown' %}  
+            CSE 477 - Homework 3
+            {% else %}
+            Logged in as {{user}}
+            {% endif %}
+          </a>
+        </h1>
+      </div>
+
+      <nav class="nav">
+        <div class="nav-hamburger">
+          <div class="hamburger"></div>
+        </div>
+        <ul id="main-nav">
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('projects') }}">Projects</a></li>
+          <li><a href="{{ url_for('resume') }}">Resume</a></li>
+          {% if user == 'Unknown' %}  
+          <li><a href="{{ url_for('login') }}">Login</a></li>
+          {% else %}
+          <li><a href="{{ url_for('logout') }}">Logout</a></li>
+          {% endif %}
+          <li id="text-li"><a href="https://www.linkedin.com/in/joseph-nagy-73919a20a/" target="_blank">Linked-In</a></li>
+          <li id="icon-li"><a href="https://www.linkedin.com/in/joseph-nagy-73919a20a/" target="_blank"><img id="linked-in-icon" src="{{ url_for('static', filename='main/images/social-linkedin.png') }}"/></a></li>  
+        </ul>
+      </nav>
+    </section>
+
+    <!-- The main content  -->
+    <main>
+      {% block maincontent %}{% endblock %}
+    </main>
+
+    <!-- Feedback Form -->
+    <div id="feedback-btn-container">
+      <p>Feedback</p>
+    </div>
+
+    <div id="feedback-form-container">
+      <form id="feedback-form" action="{{ url_for('processfeedback') }}" method="POST" enctype="multipart/form-data">
+        <input name="name" type="text" placeholder="Your Name" required/>
+        <input name="email" type="email" placeholder="Your Email" required/>
+        <textarea name="feedback" rows="5" placeholder="Enter your feedback" required></textarea>
+        <input id="feedback-submit" name="submit" value="submit" type="submit"/>
+      </form>
+    </div>
+
+    <!-- Footer Content -->
+    <footer class="footer">
+      <p id="footer-text">©2022 Joseph Nagy</p>
+    </footer>
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

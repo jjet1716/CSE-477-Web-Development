@@ -1,0 +1,67 @@
+{% extends 'shared/layout.html' %}
+
+{% block extracss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='main/css/signup-login.css') }}">
+{% endblock %}
+
+{% block extrajs %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{% endblock %}
+
+
+{% block maincontent %}
+<section class="main-content">
+    <section id="signup-header">
+      <h2>Sign Up</h2>
+      <hr>
+    </section>
+
+    <div id="signup-form-container">
+        <form class="user-form">
+            <input name="email" type="email" placeholder="Email" required/>
+            <input name="password" type="password" placeholder="Password" required/>
+            <input name="submit" value="Sign Up" type="submit"/>
+        </form>
+    </div>
+    <p id="error-msg"></p>
+</section>
+
+<script>
+let count = 0;
+jQuery('#signup-form-container .user-form').on("submit", function(e) {
+    e.preventDefault();
+
+    // package data in a JSON object
+    let email_field = jQuery("#signup-form-container input[name='email']");
+    let password_field = jQuery("#signup-form-container input[name='password']");
+
+    let email = email_field.val();
+    let password = password_field.val();
+    var data_d = {'email': email, 'password': password};
+    console.log('data_d', data_d);
+
+    // SEND DATA TO SERVER VIA jQuery.ajax({})
+    jQuery.ajax({
+        url: "/processSignup",
+        data: data_d,
+        type: "POST",
+        success:function(returned_data){
+            returned_data = JSON.parse(returned_data);
+            console.log(returned_data);
+            if (returned_data['success'] != 1) {
+                jQuery('#error-msg').text("Email in use");
+                document.querySelector('.user-form').reset();
+            }
+            else {
+                jQuery('#error-msg').text("Sign up successful!");
+                window.setTimeout(function() {
+                    window.location.href = "/home"; 
+                }, 1200);
+            }
+        }
+    });
+});
+</script>
+{% endblock %}
+
+

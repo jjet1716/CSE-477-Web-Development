@@ -1,0 +1,123 @@
+/*============= General Content Style ==============*/
+
+.main-content {
+    margin: 100px 0;
+    width: 100%
+}
+
+.col-container {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: auto;
+    width: 80vw;
+    height: 50vh;
+
+}
+
+.col-container .col {
+    flex: 1 1 100%;
+    height: inherit;
+}
+
+#about-me-name, #project-title {
+    padding-bottom: 1em;
+}
+
+.about-me-desc p, .project-desc p{
+    padding-right: 0.50em
+}
+
+/*============= Home Page ==============*/
+.col-container .col.about,
+.col-container .col.projects {
+    margin-right: 6em;
+}
+
+.col-container .col.about img,
+.col-container .col.projects img {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    box-shadow: 
+            130px 130px 0 -120px #e96f4a,
+            -130px -130px 0 -120px #797fa4;
+}
+
+.about-me-desc {
+    height: inherit;
+    overflow-y: overlay;
+}
+
+.fun-fact {
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#fun-fact-header {
+    padding-bottom: 1em;
+}
+
+/*============= Projects Page ==============*/
+.projects-header {
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.projects-header h2{
+    padding-bottom: 1em;
+}
+
+.project-desc {
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.links {
+    color: #b74747;
+}
+
+.links:hover {
+    color: #b7474798;
+    cursor: pointer;
+}
+
+/*============= Responsiveness ==============*/
+@media only screen and (max-width: 820px) {
+
+    .col-container {
+        height: unset;
+        flex-direction: column;
+    }
+
+    .col-container .col {
+        flex: auto;
+    }
+
+    .col-container .col, .col-container .col.about {
+        height: 50vh;
+    }
+
+    .col-container .col:nth-of-type(2) {
+        height: auto;
+    }
+
+    .col-container .col:first-of-type {
+        margin-right: 0em;
+        margin-bottom: 6em;
+    }
+
+    #about-me-name, #project-title {
+        text-align: center;
+    }
+
+    .about-me-desc {
+        overflow-y: visible;
+    }
+}

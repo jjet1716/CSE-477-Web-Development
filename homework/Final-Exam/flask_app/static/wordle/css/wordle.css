@@ -1,0 +1,213 @@
+#game-container {
+    width: 100%;
+    min-height: 90vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+#wordle-header {
+    text-align: center;
+    width: auto;
+    padding-top: 1em;
+    padding-bottom: 2em;
+}
+
+#wordle-header hr {
+    height: 1px;
+    width: 25vw;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+#timer {
+    width: 100%;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+#board-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 3em;
+    width: clamp(300px, 82%, 700px);
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+    position: relative;
+}
+
+.board-row {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 5px;
+    flex: 1;
+    max-height: 100px;
+}
+
+.board-tile {
+    flex: 1;
+    max-width: 100px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-right: 5px;
+}
+
+.board-tile:last-of-type {
+    margin-right: 0;
+}
+
+.board-tile[data-state="empty"] {
+    background-color: white;
+    border: 2px solid #c5c6c7;
+}
+
+.board-tile[data-state="tbd"] {
+    background-color: #e5e3e3;
+    border: 2px solid #e5e3e3;
+}
+
+.board-tile[data-state="correct"] {
+    background-color: #538d4e;
+    border: 2px solid #538d4e;
+}
+
+.board-tile[data-state="incorrect"] {
+    background-color: #3a3a3c;
+    border: 2px solid #3a3a3c;
+}
+
+.board-tile[data-state="present"] {
+    background-color: #b59f3b;
+    border: 2px solid #b59f3b;
+}
+
+#keyboard-container {
+    margin: 0 8px;
+    margin-top: auto;
+    width: 100%;
+    max-width: 500px;
+}
+
+.keyboard-row {
+    display: flex;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.keyboard-row button {
+    border: 0;
+    border-radius: 4px;
+    padding: 0;
+    margin-right: 6px;
+    cursor: pointer;
+    background-color: #818384;
+    color: white;
+    height: 58px;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.keyboard-row button:last-of-type {
+    margin: 0;
+}
+
+.keyboard-row button:hover, .keyboard-row button:focus {
+    background-color: #6e6f71;
+}
+
+.keyboard-row button.large-key {
+    flex: 1.5;
+}
+
+.keyboard-row button[data-key="BACK"] svg {
+    pointer-events: none;
+}
+
+.keyboard-row .spacer {
+    flex: 0.5;
+}
+
+#message-container {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: fit-content;
+    z-index: 99;
+}
+
+#instructions-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    padding: 1em;
+    background: black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+#instructions-container[show-instructions="True"] {
+    display: flex;
+}
+
+#instructions-container p {
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    overflow: overlay;
+}
+
+#instructions-container button {
+    cursor: pointer;
+    background: #f59d7a;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 0.7em 1.5em;
+    margin-top: 1em;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.2s ease-out;
+}
+
+#instructions-container button:hover {
+    background: #f59d7abe;
+}
+
+.message {
+    padding: 1em;
+    background: black;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 1.5em;
+    text-align: center;
+    animation: fadeIn 0.3s ease 0s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

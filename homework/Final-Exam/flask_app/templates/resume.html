@@ -1,0 +1,91 @@
+{% extends 'shared/layout.html' %}
+
+{% block extracss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='main/css/resume.css') }}">
+{% endblock %}
+
+{% block maincontent %}
+
+
+<div class="resume-container">
+{% set len_dict = resume_data|length %}
+{% set count = namespace(value=1) %}  
+<!-- Display each institution --> 
+{% for inst_id, inst in resume_data.items() %}
+  <div class="inst-container">
+    <div class="inst-info">
+      <h1>{{ inst['name']}}</h1>
+      <p class="right-align">
+      {% if inst['department'] != None %}
+        <span class="department">{{ inst['department'] }} Department</span>
+      {% endif %}
+      {% if inst['address'] != None %}
+        {{ inst['address'] }},
+      {% endif %}
+      {% if inst['city'] != None %}
+        {{ inst['city'] }},
+      {% endif %}
+      {% if inst['state'] != None %}
+        {{ inst['state'] }}
+      {% endif %}
+      {% if inst['zip'] != None %}
+        ,{{ inst['zip'] }}
+      {% endif %}
+      </p>
+    </div>
+
+    <!-- Display each position in that institution --> 
+    {% if inst['positions'] != {} %}
+      {% for pos_id, pos in inst['positions'].items() %}
+        <div class="pos-info">
+          <h2>{{ pos['title']}} </h2>
+          <p class="right-align">{{ pos['start_date'] }} - {{ pos['end_date'] }}</p>
+          <p>{{ pos['responsibilities'] }}</p>
+        </div>
+
+        <!-- Display each experience in that position --> 
+        {% if pos['experiences'] != {} %}
+          <ul class="exp-list">
+          {% for exp_id, exp in pos['experiences'].items() %}
+            <li class="exp-info">
+              {% if exp['hyperlink'] != None %}
+                <a class="exp-title linked" href="{{ exp['hyperlink'] }}" target="_blank">{{ exp['name']}}:</a>
+              {% else %}
+                <span class="exp-title">{{ exp['name']}}:</span>
+              {% endif %}
+              {{ exp['description'] }}
+
+              <!-- Display each skill used for that experience --> 
+              {% if exp['skills'] != {} %}
+                {% set skill_len = exp['skills']|length %}
+                {% set skill_count = namespace(value=1) %}
+                <p class="skill-info">Skills used:&nbsp;
+                {% for skill_id, skill in exp['skills'].items() %}
+                  <span>{{ skill['name'] }}{% if skill['skill_level'] != None %} level: {{ skill['skill_level'] }}{% endif %}</span>{% if skill_count.value != skill_len %}<span>, </span>{% endif %}
+                  {% set skill_count.value = skill_count.value + 1 %}
+                {% endfor %}                                           
+                </p>
+              {% endif %}
+
+            </li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+
+      {% endfor %}
+    {% endif %}
+
+  </div>
+  {% if count.value != len_dict %}
+    <hr>
+  {% endif %}
+  {% set count.value = count.value + 1 %}
+{% endfor %}
+
+</div>
+
+
+
+{% endblock %}
+
+
