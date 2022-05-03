@@ -49,8 +49,9 @@ def signup():
 
 @app.route('/logout')
 def logout():
-	session.pop('email', default=None)
-	return redirect('/')
+    session.pop('email', default=None)
+    session.pop('wordleVisited', default=None)
+    return redirect('/')
 
 @app.route('/processlogin', methods = ["POST", "GET"])
 def processlogin():
@@ -58,7 +59,7 @@ def processlogin():
     exists = db.authenticate(form_fields['email'], form_fields['password'])
     if (exists['success'] == 1):
         session['email'] = db.reversibleEncrypt('encrypt', form_fields['email']) 
-        session['wordleComplete'] = False
+        session['wordleVisited'] = False
         return json.dumps({'success':1})
     else:
         return json.dumps({'success':0})
@@ -69,7 +70,7 @@ def processSignup():
     created = db.createUser(form_fields['email'], form_fields['password'], 'user')
     if (created['success'] == 1):
         session['email'] = db.reversibleEncrypt('encrypt', form_fields['email'])
-        session['wordleComplete'] = False
+        session['wordleVisited'] = False
         return json.dumps({'success':1})
     else:
         return json.dumps({'success':0})
